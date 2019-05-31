@@ -28,8 +28,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
  * @author philip
  *
  */
-@Mod(value = ChickenMOD.MODID)
-public class ChickenMOD 
+@Mod(value = ChickenMod.MODID)
+public class ChickenMod 
 {
 	
     // Directly reference a log4j logger.
@@ -49,7 +49,7 @@ public class ChickenMOD
 	
 //	public static List<EntityEntry> ENTITIES = new ArrayList<EntityEntry>();
 
-    public ChickenMOD() {
+    public ChickenMod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading

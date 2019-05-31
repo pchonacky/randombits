@@ -15,18 +15,18 @@ public class ModItems {
 
 	private static void NewItem(String name, ItemGroup tab) {
 		Item thisItem = new Item(new Properties().group(tab))
-				.setRegistryName(ChickenMOD.MODID,name);
-		ChickenMOD.LOGGER.info("HELLO from NewItems");
+				.setRegistryName(ChickenMod.MODID,name);
+		ChickenMod.LOGGER.info("HELLO from NewItems");
 		itemList.add(thisItem);
 	}
 	
 	public static List<Item> MakeItems() {
-		ChickenMOD.LOGGER.info("HELLO from MakeItems");
+		ChickenMod.LOGGER.info("HELLO from MakeItems");
 		NewItem ("test_item", ItemGroup.MISC);
 		
-		for (Block thisBlock:ChickenMOD.BLOCKS) {
-			Item thisItem = new ItemBlock(thisBlock, new Properties().group(ChickenMOD.ITEMTAB)).setRegistryName(thisBlock.getRegistryName());
-			ChickenMOD.LOGGER.info("HELLO from MakeItems-> block tab registry" );
+		for (Block thisBlock:ChickenMod.BLOCKS) {
+			Item thisItem = new ItemBlock(thisBlock, new Properties().group(ChickenMod.ITEMTAB)).setRegistryName(thisBlock.getRegistryName());
+			ChickenMod.LOGGER.info("HELLO from MakeItems-> block tab registry" );
 			itemList.add(thisItem);
 		}
 		return itemList;

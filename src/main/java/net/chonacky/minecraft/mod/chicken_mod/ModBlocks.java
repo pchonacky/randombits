@@ -13,10 +13,10 @@ public class ModBlocks {
 	private static List<Block> blockList = new ArrayList<Block>();
 	
 	private static void NewBlock(String name,Material materialIn) {
-	Block thisBlock = new Block(Properties.create(materialIn)).setRegistryName(ChickenMOD.MODID,name);
+	Block thisBlock = new Block(Properties.create(materialIn)).setRegistryName(ChickenMod.MODID,name);
 	blockList.add(thisBlock);	
-	ChickenMOD.LOGGER.info("HELLO from MakeBLocks");
-	//ChickenMOD.ITEMS.add(thisBlock.asItem());
+	ChickenMod.LOGGER.info("HELLO from MakeBLocks");
+	//ChickenMod.ITEMS.add(thisBlock.asItem());
 	}
 	
 	public static List<Block> MakeBlocks() {

@@ -7,29 +7,29 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid=ChickenMOD.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid=ChickenMod.MODID, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class Registry {
 
 	//Register Items
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event)  {
-		ChickenMOD.LOGGER.info("HELLO from Registry :: ITEMS");
-		for (Item thisItem : ChickenMOD.ITEMS) {
+		ChickenMod.LOGGER.info("HELLO from Registry :: ITEMS");
+		for (Item thisItem : ChickenMod.ITEMS) {
 			event.getRegistry().register(thisItem);
 			}
 		}
 	//Register Blocks
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event)	{
-		ChickenMOD.LOGGER.info("HELLO from Registry :: BLOCKS");
-		for (Block thisBlock : ChickenMOD.BLOCKS ) {
+		ChickenMod.LOGGER.info("HELLO from Registry :: BLOCKS");
+		for (Block thisBlock : ChickenMod.BLOCKS ) {
 			event.getRegistry().register(thisBlock);
 			}
 	}
 //	//Register Entities
 //	@SubscribeEvent
 //	public static void registerEntities(final RegistryEvent.Register<EntityEntry> event) {
-//		for (EntityEntry thisEntity : ChickenMOD.ENTITIES) {
+//		for (EntityEntry thisEntity : ChickenMod.ENTITIES) {
 //			event.getRegistry().register(thisEntity);	
 //		}
 //	}
