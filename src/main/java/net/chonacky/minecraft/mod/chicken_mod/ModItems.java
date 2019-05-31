@@ -16,29 +16,23 @@ public class ModItems {
 	private static void NewItem(String name, ItemGroup tab) {
 		Item thisItem = new Item(new Properties().group(tab))
 				.setRegistryName(ChickenMod.MODID,name);
-		ChickenMod.LOGGER.info("HELLO from NewItems");
 		itemList.add(thisItem);
 	}
 	
 	public static List<Item> MakeItems() {
-		ChickenMod.LOGGER.info("HELLO from MakeItems");
 		NewItem ("test_item", ItemGroup.MISC);
 		
 		for (Block thisBlock:ChickenMod.BLOCKS) {
-			Item thisItem = new ItemBlock(thisBlock, new Properties().group(ChickenMod.ITEMTAB)).setRegistryName(thisBlock.getRegistryName());
-			ChickenMod.LOGGER.info("HELLO from MakeItems-> block tab registry" );
+			Item thisItem = new ItemBlock(thisBlock, new Properties()
+					.group(ChickenMod.ITEMTAB))
+					.setRegistryName(thisBlock.getRegistryName());
 			itemList.add(thisItem);
 		}
 		return itemList;
 	}
-	
-	/*public ModItems(String name) {
-		super(new Properties());
-		this.setRegistryName(name);
-		this.getCreativeTabs().add(ItemGroup.MISC);
-		Registry.ITEMS.add(this);
-	}*/
 
+
+	//1.12 code to rewrite
 //	@Override
 //	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 //		return super.onItemRightClick(worldIn, playerIn, handIn);

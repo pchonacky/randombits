@@ -13,7 +13,6 @@ public class Registry {
 	//Register Items
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event)  {
-		ChickenMod.LOGGER.info("HELLO from Registry :: ITEMS");
 		for (Item thisItem : ChickenMod.ITEMS) {
 			event.getRegistry().register(thisItem);
 			}
@@ -21,7 +20,6 @@ public class Registry {
 	//Register Blocks
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event)	{
-		ChickenMod.LOGGER.info("HELLO from Registry :: BLOCKS");
 		for (Block thisBlock : ChickenMod.BLOCKS ) {
 			event.getRegistry().register(thisBlock);
 			}
