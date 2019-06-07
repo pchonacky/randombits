@@ -10,14 +10,19 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.block.Block;
 //import net.minecraft.block.Block.Properties;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EntityType.Builder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemGroup;
 //import net.minecraft.item.Item.Properties;
-
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -73,6 +78,11 @@ public class ChickenMod
     {
         // some preinit code
         //LOGGER.info("HELLO FROM PREINIT");
+    	DistExecutor.runWhenOn(
+                Dist.CLIENT, () -> () -> 
+                RenderingRegistry.registerEntityRenderingHandler(EntityProtoChicken.class,RenderProtoChicken :: new)
+                );
+    	
     }
 
 
@@ -80,6 +90,7 @@ public class ChickenMod
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+
     }
     
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -120,14 +131,30 @@ public class ChickenMod
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
         	itemRegistryEvent.getRegistry().registerAll(
-        			(Item)new ItemBlock(test_block,new Item.Properties().group(ChickenMod.ITEMTAB)).setRegistryName(test_block.getRegistryName()),
+        			(Item)new ItemBlock(test_block,new Item.Properties().group(ITEMTAB)).setRegistryName(test_block.getRegistryName()),
         			new Item(new Item.Properties().group(ITEMTAB)).setRegistryName(ChickenMod.MODID,"test_item")
         			);
         }
         
+    	//Register Entities
+    	@SubscribeEvent
+    	public static void onEntitiesRegistry(final RegistryEvent.Register<EntityType<?>> entityRegistryEvent) {	
+    		entityRegistryEvent.getRegistry().registerAll(		    	
+    		    EntityType.Builder.create(EntityProtoChicken.class, EntityProtoChicken::new)
+    		    	.tracker(60, 24, true).disableSerialization().build("protochicken").setRegistryName(MODID, "protochicken")
+    			);	
+    	}
+//    		
+//sample:		EntityType.Builder.create(YourEntityClass.class, YourEntityClass::new)
+//    					.tracker(range, frequency, sendvelocity)
+//						.build("modid:name"));    		
+    	
+
+    	
+    	//TODO- Register renderer for ProtoChicken
         
-        //List<Item> ITEMS = ModItems.MakeItems();
-    }
+    }  //RegistryEvents class
+    
     
 
 }
