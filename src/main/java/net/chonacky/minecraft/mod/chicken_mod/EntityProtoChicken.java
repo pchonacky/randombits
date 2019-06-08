@@ -20,13 +20,14 @@ public class EntityProtoChicken extends EntityChicken
 		this.setSize(2.5F, 5.0F);
 		this.setBoundingBox(this.getBoundingBox().offset(0, 0, 25));
 		this.stepHeight = 2.1F;
+		
+		//these appear to be no longer relevant in 1.13
 //		this.jumpPower = 0.0F;
 //		this.isJumping = false;
 	}
 	
 	@Override
 	public float getEyeHeight() {
-	
 		return super.getEyeHeight()-0.5F;
 	}
 
@@ -43,6 +44,7 @@ public class EntityProtoChicken extends EntityChicken
 	@Override 
     public boolean processInteract(EntityPlayer player, EnumHand hand)
 	    {
+//		if (IsInstanceOf(player,EntityPlayer.class))
 		 this.mountTo(player);
 		 super.processInteract(player, hand);
 		 return true;
