@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +17,6 @@ public class EntityProtoChicken extends EntityChicken
 
 	public EntityProtoChicken(World worldIn) {
 		super(worldIn);
-
 		this.setSize(2.5F, 5.0F);
 		this.setBoundingBox(this.getBoundingBox().offset(0, 0, 25));
 		this.stepHeight = 2.1F;
@@ -30,7 +30,12 @@ public class EntityProtoChicken extends EntityChicken
 	public float getEyeHeight() {
 		return super.getEyeHeight()-0.5F;
 	}
-
+	
+	@Override
+	public EntityType<?> getType()
+	{
+		return ChickenMod.RegistryEvents.protochicken;
+	}
 	
 	@Override
 	public void livingTick()

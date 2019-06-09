@@ -88,6 +88,7 @@ public class ChickenMod
     	
     	public static final Block test_block=null;
     	public static final Item test_item=null;
+    	public static final EntityType<EntityProtoChicken> protochicken=null;
     	
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
