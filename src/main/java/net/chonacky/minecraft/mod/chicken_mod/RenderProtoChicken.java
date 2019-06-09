@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class RenderProtoChicken extends RenderLiving<EntityProtoChicken>
 {
 
-	 private static final ResourceLocation PROTOCHICKEN_TEXTURES = new ResourceLocation(ChickenMod.MODID+":textures/entity/byhut.png");
+	 private static final ResourceLocation PROTOCHICKEN_TEXTURES = new ResourceLocation(ChickenMod.MODID,"textures/entity/byhut.png");
     																	//"chicken:textures/entity/checker.png"
 	 
 	 // public RenderLiving(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn)
@@ -23,7 +23,6 @@ public class RenderProtoChicken extends RenderLiving<EntityProtoChicken>
  
     @Override
 	protected ResourceLocation getEntityTexture(EntityProtoChicken entity) {
-		
 		return PROTOCHICKEN_TEXTURES;
 	}
 
@@ -38,20 +37,16 @@ public class RenderProtoChicken extends RenderLiving<EntityProtoChicken>
         return (MathHelper.sin(f) + 1.0F) * f1;
     }
 
+    //probably not needed (implemented in Super class)
+    /*
     @Override
     public void doRender(EntityProtoChicken entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        if (entity.isInWater()) {
-          	super.doRender(entity, x, (y-1.0D), z, entityYaw, partialTicks);
-        }
-        else {
-          	super.doRender(entity, x, y, z, entityYaw, partialTicks);
-        }
-        if (!this.renderOutlines)
-        {
-            this.renderLeash(entity, x, y, z, entityYaw, partialTicks);
-        }
+        if (entity.isInWater()) { super.doRender(entity, x, (y-1.0D), z, entityYaw, partialTicks); }
+        else { super.doRender(entity, x, y, z, entityYaw, partialTicks); }
+        if (!this.renderOutlines) { this.renderLeash(entity, x, y, z, entityYaw, partialTicks);   }
     }
+    */
     
 	
 }
